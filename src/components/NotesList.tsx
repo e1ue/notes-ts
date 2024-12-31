@@ -46,15 +46,15 @@ export default function NotesList({
               <p className="text-xl font-bold">
                 {note.name.trim().length === 0
                   ? "Нет названия"
-                  : note.name.length > 40
+                  : note.name.length > 20
                   ? note.name.slice(0, 20) + "..."
                   : note.name}
               </p>
               <p>
                 {note.text.trim().length === 0
                   ? "Заметка пуста"
-                  : note.text.length > 40
-                  ? note.text.slice(0, 40) + "..."
+                  : note.text.length > 30
+                  ? note.text.slice(0, 30) + "..."
                   : note.text}
               </p>
             </div>
