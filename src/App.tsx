@@ -8,6 +8,19 @@ function App() {
     localStorage.getItem("container") || "default"
   );
 
+  const [notes, setNotes] = useState<
+    Array<{ id: number; name: string; text: string }>
+  >(() => {
+    const savedNotes = localStorage.getItem("notes");
+    return savedNotes ? JSON.parse(savedNotes) : [];
+  });
+
+  const [selectedNote, setSelectedNote] = useState<{
+    id: number;
+    name: string;
+    text: string;
+  } | null>(null);
+
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
@@ -23,6 +36,32 @@ function App() {
   const handleConteinerData = (newConteiner: string) => {
     setContainer(newConteiner);
     localStorage.setItem("container", newConteiner);
+  };
+
+  const handleNoteClick = (note: {
+    id: number;
+    name: string;
+    text: string;
+  }) => {
+    setSelectedNote(note);
+  };
+
+  const updateNote = (updatedNote: {
+    id: number;
+    name: string;
+    text: string;
+  }) => {
+    const updatedNotes = notes.map((note) =>
+      note.id === updatedNote.id ? updatedNote : note
+    );
+    setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  };
+
+  const handleDeleteNote = (id: number) => {
+    const updatedNotes = notes.filter((note) => note.id !== id);
+    setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
   };
 
   return (
@@ -54,18 +93,50 @@ function App() {
                 : "w-[35%]"
             }`}
           >
-            <NotesList />
+            <NotesList
+              notes={notes}
+              setNotes={setNotes}
+              onNoteClick={handleNoteClick}
+              selectedNote={selectedNote}
+              onDeleteNote={handleDeleteNote}
+            />
           </div>
           <div className="flex flex-col w-full h-full">
-            <input
-              type="text"
-              className="mb-[10px] p-[10px] border dark:border-white/15 rounded-[15px] dark:bg-white/10 bg-black/5 dark:text-white text-black outline-none"
-              placeholder="Заголовок"
-            />
-            <textarea
-              className="flex-grow p-[10px] custom-scrollbar border dark:border-white/15 rounded-[15px] dark:bg-white/10 bg-black/5 dark:text-white text-black outline-none resize-none"
-              placeholder="Ваши заметки..."
-            ></textarea>
+            {selectedNote?.id ? (
+              <div className="flex flex-col w-full h-full">
+                <input
+                  type="text"
+                  value={selectedNote.name || ""}
+                  onChange={(e) => {
+                    const updatedNote = {
+                      ...selectedNote,
+                      name: e.target.value,
+                    };
+                    setSelectedNote(updatedNote);
+                    updateNote(updatedNote);
+                  }}
+                  className="mb-[10px] p-[15px] border dark:border-white/15 rounded-[15px] dark:bg-white/10 bg-black/5 dark:text-white text-black outline-none"
+                  placeholder="Заголовок"
+                />
+                <textarea
+                  value={selectedNote.text || ""}
+                  onChange={(e) => {
+                    const updatedNote = {
+                      ...selectedNote,
+                      text: e.target.value,
+                    };
+                    setSelectedNote(updatedNote);
+                    updateNote(updatedNote);
+                  }}
+                  className="flex-grow p-[15px] custom-scrollbar border dark:border-white/15 rounded-[15px] dark:bg-white/10 bg-black/5 dark:text-white text-black outline-none resize-none"
+                  placeholder="Ваши заметки..."
+                ></textarea>
+              </div>
+            ) : (
+              <div className="dark:text-white text-black flex-grow p-[15px] border dark:border-white/15 rounded-[15px] dark:bg-white/10 bg-black/5 resize-none flex justify-center items-center">
+                <p>Выберите или создайте заметку</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
