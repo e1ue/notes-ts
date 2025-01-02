@@ -36,25 +36,21 @@ export default function DialogInfo() {
         className="relative z-10 focus:outline-none"
         onClose={close}
       >
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto bg-black/65 text-white">
+        <div className="fixed inset-0 z-10 w-screen overflow-y-auto bg-black/65 text-black dark:text-white">
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-[15px] bg-black border border-white/15 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+              className="w-full max-w-md rounded-[15px] bg-white dark:bg-black border border-black/15 dark:border-white/15 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="select-none">
                 <div className="flex items-center justify-center space-x-[10px]">
-                  <ClipboardDocumentListIcon
-                    width={32}
-                    height={32}
-                    color="white"
-                  />
+                  <ClipboardDocumentListIcon width={32} height={32} />
                   <p className="font-semibold text-[32px]">notes.ts</p>
                 </div>
-                <p className="font-medium text-sm text-center text-white/75">
+                <p className="font-medium text-sm text-center text-black/75 dark:text-white/75">
                   Ваши заметки
                 </p>
-                <hr className="border-white/15 my-6" />
+                <hr className="border-black/15 dark:border-white/15 my-6" />
               </div>
 
               <div className="space-y-[10px]">
@@ -69,7 +65,7 @@ export default function DialogInfo() {
                   разработчика в{" "}
                   <a
                     href="https://github.com/e1ue/notes-ts"
-                    className="text-purple-300 hover:underline"
+                    className="text-purple-700 dark:text-purple-300 hover:underline"
                     target="_blank"
                   >
                     github
@@ -78,8 +74,8 @@ export default function DialogInfo() {
                 </p>
               </div>
 
-              <div className="bg-red-500/10 border border-red-500/50 p-[10px] rounded-[10px] my-6">
-                <p className="text-[#ffc0c0] text-[14px]">
+              <div className="bg-red-500/50 dark:bg-red-500/10 border border-red-500 dark:border-red-500/50 p-[10px] rounded-[10px] my-6">
+                <p className="text-[#8b1717] dark:text-[#ffc0c0] text-[14px]">
                   Разработчик НЕ рекомендует хранить личную или важную для вас
                   информацию!
                 </p>
@@ -87,10 +83,10 @@ export default function DialogInfo() {
 
               <div className="mt-4 flex justify-end">
                 <Button
-                  className="flex justify-center items-center rounded-[10px] font-medium text-[14px] bg-purple-700 px-[20px] py-[12.5px] hover:bg-purple-600 leading-none"
+                  className="flex justify-center text-purple-950 dark:text-purple-100 items-center rounded-[10px] font-medium text-[14px] hover:bg-purple-400 bg-purple-500 dark:bg-purple-700 px-[20px] py-[12.5px] dark:hover:bg-purple-600 leading-none"
                   onClick={close}
                 >
-                  <XMarkIcon width={18} hanging={18} className="mr-[2.5px]"/>
+                  <XMarkIcon width={18} hanging={18} className="mr-[2.5px]" />
                   Закрыть окно
                 </Button>
               </div>
