@@ -1,5 +1,6 @@
-import { ClipboardDocumentListIcon, CodeBracketIcon, MoonIcon, SunIcon } from "@heroicons/react/16/solid";
+import { CodeBracketIcon, MoonIcon, SunIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
+import DialogInfo from "./DialogInfo";
 
 interface HeaderProps {
   onThemeChange: (theme: string) => void;
@@ -26,18 +27,7 @@ export default function Header({ onThemeChange, onConteinerChange }: HeaderProps
 
   return (
     <div className="max-w-screen-sm mx-auto py-[25px] flex-wrap flex justify-center space-x-[15px]">
-      <button
-        className="flex items-center space-x-[5px] px-[20px] py-[10px] border max-w-min rounded-[10px] select-none
-                            hover:border-black/35 hover:bg-black/5 dark:hover:border-white/75 dark:hover:bg-white/10
-                            border-black/25 dark:border-white/50"
-      >
-        <ClipboardDocumentListIcon
-          width={20}
-          height={20}
-          className="dark:text-white text-black"
-        />
-        <p className="font-medium dark:text-white text-black">notes.ts</p>
-      </button>
+      <DialogInfo />
 
       <div
         className="flex items-center space-x-[5px] px-[7.5px] border max-w-min rounded-[10px] select-none
@@ -143,7 +133,9 @@ export default function Header({ onThemeChange, onConteinerChange }: HeaderProps
         </button>
       </div>
 
-      <button
+      <a
+        href="https://github.com/e1ue"
+        target="_blank"
         className="flex items-center space-x-[5px] px-[20px] py-[10px] border max-w-min rounded-[10px] select-none
                             hover:border-black/35 hover:bg-black/5 dark:hover:border-white/75 dark:hover:bg-white/10
                             border-black/25 dark:border-white/50"
@@ -154,7 +146,7 @@ export default function Header({ onThemeChange, onConteinerChange }: HeaderProps
           className="dark:text-white text-black"
         />
         <p className="font-medium dark:text-white text-black">elue</p>
-      </button>
+      </a>
     </div>
   );
 }

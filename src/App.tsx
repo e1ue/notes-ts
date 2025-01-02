@@ -62,6 +62,9 @@ function App() {
     const updatedNotes = notes.filter((note) => note.id !== id);
     setNotes(updatedNotes);
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    if (selectedNote?.id === id) {
+      setSelectedNote(null)
+    }
   };
 
   return (
