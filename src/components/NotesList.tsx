@@ -29,14 +29,14 @@ export default function NotesList({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-col space-y-[10px]">
+    <div className="space-y-4 lg:space-x-0 min-w-max">
+      <div className="flex flex-row lg:flex-col space-x-[10px] lg:space-x-0 space-y-0 lg:space-y-[10px]">
         {notes.map((note) => (
           <button
             key={note.id}
             onClick={() => onNoteClick(note)}
-            className={`dark:text-white text-black text-start dark:bg-white/10 bg-black/5 p-[25px] rounded-[15px] flex justify-between items-center
-                     hover:dark:bg-white/15 hover:bg-black/10 border dark:border-white/15 ${
+            className={`dark:text-white text-black text-start dark:bg-white/10 bg-black/5 p-[25px] rounded-[15px] min-w-[300px] lg:w-auto justify-between items-center
+                     hover:dark:bg-white/15 hover:bg-black/10 border dark:border-white/15 flex ${
                        note.id === selectedNote?.id
                          ? "dark:bg-white/15 bg-black/10"
                          : ""
@@ -72,7 +72,7 @@ export default function NotesList({
         <button
           onClick={addNote}
           className="dark:text-white text-black dark:bg-white/10 bg-black/5 p-[25px] rounded-[15px]
-                     hover:dark:bg-white/15 hover:bg-black/10 border dark:border-white/15 flex justify-center items-center"
+                     hover:dark:bg-white/15 hover:bg-black/10 border dark:border-white/15 flex justify-center items-center w-max lg:w-full"
         >
           <PlusCircleIcon
             width={20}

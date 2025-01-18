@@ -86,14 +86,14 @@ function App() {
           onThemeChange={handleThemeData}
           onConteinerChange={handleConteinerData}
         />
-        <div className="p-[25px] h-[calc(100vh-100px)] flex justify-between space-x-[10px]">
+        <div className="p-[25px] h-[calc(100vh-100px)] flex flex-col lg:flex-row justify-between space-y-[10px] space-x-0 lg:space-x-[10px] lg:space-y-0">
           <div
-            className={`overflow-y-auto custom-scrollbar pr-[7.5px] ${
+            className={`overflow-x-auto w-full h-[130px] lg:h-auto lg:overflow-y-auto custom-scrollbar pr-0 lg:pr-[7.5px] ${
               container === "default"
-                ? "w-[40%]"
+                ? "sm:w-[40%]"
                 : container === "min"
-                ? "w-[50%]"
-                : "w-[35%]"
+                ? "xl:w-[50%]"
+                : "2xl:w-[35%]"
             }`}
           >
             <NotesList

@@ -7,7 +7,10 @@ interface HeaderProps {
   onConteinerChange: (conteiner: string) => void;
 }
 
-export default function Header({ onThemeChange, onConteinerChange }: HeaderProps) {
+export default function Header({
+  onThemeChange,
+  onConteinerChange,
+}: HeaderProps) {
   const [theme, setTheme] = useState<string>(
     localStorage.getItem("theme") || "dark"
   );
@@ -30,9 +33,10 @@ export default function Header({ onThemeChange, onConteinerChange }: HeaderProps
       <DialogInfo />
 
       <div
-        className="flex items-center space-x-[5px] px-[7.5px] border max-w-min rounded-[10px] select-none
-                            hover:border-black/35 dark:hover:border-white/75
-                            border-black/25 dark:border-white/50"
+        className="items-center space-x-[5px] px-[7.5px] border max-w-min rounded-[10px] select-none
+                  hover:border-black/35 dark:hover:border-white/75
+                  border-black/25 dark:border-white/50
+                    hidden xl:flex"
       >
         <button
           className={`py-[5px] px-[5px] rounded-[5px] dark:hover:bg-white/10 hover:bg-black/5 ${
