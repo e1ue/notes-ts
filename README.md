@@ -1,50 +1,88 @@
-# React + TypeScript + Vite
+# Notes.TS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![header](public/header.png)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Notes.TS** — это легковесное веб-приложение для создания, редактирования и управления заметками. Приложение разработано с использованием современных технологий, таких как React, TypeScript и Vite. Оно идеально подходит для простого и быстрого управления вашими личными записями. Все данные сохраняются локально на устройстве пользователя с использованием `localStorage`, что исключает необходимость в серверной части.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Основные возможности
 
-- Configure the top-level `parserOptions` property like this:
+- **Создание заметок:** Легко добавляйте новые записи с заголовком и содержанием.
+- **Редактирование заметок:** Изменяйте текст существующих заметок прямо в приложении.
+- **Удаление заметок:** Удаляйте ненужные записи одним кликом.
+- **Сохранение данных:** Все данные сохраняются в `localStorage`, что обеспечивает их доступность даже после закрытия браузера.
+- **Без серверной части:** Приложение работает полностью на клиентской стороне, что делает его быстрым, надежным и независимым от сети.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Установка и запуск
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. **Клонируйте репозиторий:**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+   git clone https://github.com/e1ue/notes-ts.git
+   ```
+
+2. **Перейдите в директорию проекта:**
+
+   ```bash
+   cd notes-ts
+   ```
+
+3. **Установите зависимости:**
+
+   ```bash
+   npm install
+   ```
+
+4. **Запустите приложение в режиме разработки:**
+
+   ```bash
+   npm run dev
+   ```
+
+   Откройте [http://localhost:5173](http://localhost:5173) в браузере, чтобы увидеть приложение.
+  ---
+**Сборка для продакшена:**
+
+   Для создания оптимизированной версии приложения выполните:
+
+   ```bash
+   npm run build
+   ```
+
+   Собранные файлы будут находиться в директории `dist`.
+
+---
+
+## Структура проекта
+
+- **`public/`**: Статические файлы, такие как изображения и иконки.
+- **`src/`**: Исходный код приложения.
+  - **`components/`**: Реактивные компоненты для пользовательского интерфейса.
+  - **`assets/`**: Медиафайлы и стили.
+  - **`App.tsx`**: Главный компонент, определяющий логику приложения.
+  - **`main.tsx`**: Точка входа приложения.
+- **`index.html`**: Основной HTML-файл приложения.
+- **`package.json`**: Файл конфигурации npm.
+- **`tsconfig.json`**: Конфигурация TypeScript.
+- **`vite.config.ts`**: Конфигурация сборщика Vite.
+
+---
+
+## Используемые технологии
+
+| Технология      | Описание                                                                 |
+|------------------|--------------------------------------------------------------------------|
+| **React**       | Библиотека для создания компонентного пользовательского интерфейса.     |
+| **TypeScript**  | Надстройка над JavaScript, обеспечивающая строгую типизацию.            |
+| **Vite**        | Быстрый инструмент для разработки и сборки фронтенд-приложений.         |
+| **TailwindCSS**| Утилитарный CSS-фреймворк для стилизации интерфейсов.                   |
+
+---
+
+
+### Автор
+Проект разработан [e1ue](https://github.com/e1ue). 
